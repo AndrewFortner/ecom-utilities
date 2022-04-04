@@ -1,12 +1,18 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Createacc from './components/Createacc';
+import Register from './components/Register';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />}/> //for the home page, create one
+        <Route path='/Register' element={Register} /> //create a route for each component
+        <Route path='*' element={<ErrorPage />} /> //create error page 
+      </Routes>
+    </Router>
   );
 }
 
