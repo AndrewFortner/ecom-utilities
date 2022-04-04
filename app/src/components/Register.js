@@ -30,7 +30,7 @@ function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if(values.name && values.email && values.password && values.confirmPassword) {
-            setValues(true);
+            setValid(true);
         }
         setSubmitted(true);
     }
