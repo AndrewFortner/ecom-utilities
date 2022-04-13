@@ -1,89 +1,86 @@
 import React, { useState } from 'react';
-// import ReactDOM from 'react-dom';
+import useForm from './useForm';
+import validate from './validateInfo';
+import Form from './Form.css';
 
-function Register() {
-    const [values, setValues] = useState({
-        name: '',
-        emailAddress: '',
-        password: '',
-        confirmPassword: ''
-    });
-
-    const [submitted, setSubmitted] = useState(false);
-
-    const [valid, setValid] = useState(false);
-
-    const handleNameInputChange = (event) => {
-        setValues({...values, name: event.target.value})
-    }
-
-    const handleEmailInputChange = (event) => {
-        setValues({...values, emailAddress: event.target.value})
-    }
-
-    const handlePasswordInputChange = (event) => {
-        if (values.password === values.confirmPassword) {
-            setValues({...values, password: event.target.value})
-        }
-    } // is this the correct way of checking if pass and confirmPass match?
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if(values.name && values.email && values.password && values.confirmPassword) {
-            setValid(true);
-        }
-        setSubmitted(true);
-    }
-
-    // not sure what to do with the confirm password box
-
-     return (
-        <div className='form-container'>
-         <h2 className='form-header'>Create Your Account</h2>
-         {submitted && valid ? <div className='sucess-message'>Success! Thank you for registering!</div> : null}
-         <form className='register-form' onSubmit={handleSubmit}>
-            <label for="name">Name</label>
-             <input
-                disabled={submitted}
-                onChange={handleNameInputChange}
-                value={values.name}
-                className='form-field' 
-                placeholder='Enter Name'
-                name='name' />
-             {submitted && !values.name ? <span>Please enter a name</span> : null} 
-            <label for="email">Email</label>
-             <input 
-                disabled={submitted}
-                onChange={handleEmailInputChange}
-                value={values.emailAddress}
-                className='form-field' 
-                placeholder='Enter Email'
-                name='email address' />
-             {submitted && !values.emailAddress ? <span>Please enter an email address</span> : null}
-            <label for="password">Password</label>
-             <input 
-                disabled={submitted}
-                onChange={handlePasswordInputChange}
-                value={values.password}
-                className='form-field' 
-                placeholder='Enter Password' 
-                name='password' />
-             {submitted && !values.password ? <span>Please enter a password</span> : null}
-            <label for="confirm password">Confirm Password</label>
-             <input 
-                disabled={submitted}
-                value={values.confirmPassword}
-                className='form-field' 
-                placeholder='Enter Password' 
-                name='confirm password' />
-             {submitted && !values.confirmPassword && values.password !== values.confirmPassword ? <span>Please confirm password</span> : null}
-            <button 
-            className='form-field'
-            type='create account'> Create Account</button>
-         </form>
+const Register = ({submitForm}) => {
+    const { handleChange, values, handleSubmit, errors } = useForm(
+        submitForm, 
+        validate
+        );
+    
+    return (
+        <div className='form-content-right'>
+            <form className='form' onSubmit={handleSubmit}>
+                <h1>Create Your Account</h1>
+                <div className='form-inputs'>
+                    <label htmlFor='name'
+                    className='form-label'>
+                    Name
+                    </label>
+                        <input 
+                        id='name'
+                        type="text" 
+                        name='name' 
+                        className="form-input"
+                        placeholder='Enter name'
+                        value={values.name}
+                        onChange={handleChange} />
+                        {errors.name && <p>{errors.name}</p>}
+                </div>
+                <div className='form-inputs'>
+                    <label htmlFor='email'
+                    className='form-label'>
+                    Email Address
+                    </label>
+                        <input 
+                        id='email'
+                        type="email" 
+                        name='email' 
+                        className="form-input"
+                        placeholder='Enter email'
+                        value={values.email}
+                        onChange={handleChange} />
+                        {errors.email && <p>{errors.email}</p>}
+                </div>
+                <div className='form-inputs'>
+                    <label htmlFor='password'
+                    className='form-label'>
+                    Password
+                    </label>
+                        <input 
+                        id='password'
+                        type="password" 
+                        name='password' 
+                        className="form-input"
+                        placeholder='Enter password'
+                        value={values.password}
+                        onChange={handleChange} />
+                        {errors.password && <p>{errors.password}</p>}
+                </div>
+                <div className='form-inputs'>
+                    <label htmlFor='password2'
+                    className='form-label'>
+                    Confirm Password
+                    </label>
+                        <input 
+                        id='password2'
+                        type="password" 
+                        name='password2' 
+                        className="form-input"
+                        placeholder='Enter password'
+                        value={values.password2}
+                        onChange={handleChange} />
+                        {errors.password2 && <p>{errors.password2}</p>}
+                </div>
+                <button className="form-input-btn" 
+                type='submit'>
+                Create Account
+                </button>
+            </form>
         </div>
-      )
-     }
+    );
+};
 
 
 export default Register;
