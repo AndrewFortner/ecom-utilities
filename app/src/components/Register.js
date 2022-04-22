@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useForm from './useForm';
 import validate from './validateInfo';
 import Form from './Form.css';
+import './Register.css';
 
 const Register = ({submitForm}) => {
     const { handleChange, values, handleSubmit, errors } = useForm(

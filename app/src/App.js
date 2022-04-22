@@ -4,14 +4,15 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
-import Navbar from './components/Navbar';
+import Home from './components/pages/Home';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Register />} /> //create a route for each component
-        <Route path='/' element={<Login />} />
+        <Route path='/Register' element={<Register />} />
+        <Route path='/Login' element={<Login />} />
+        <Route path='/' element={<Home />} />
       </Routes>
     </Router>
   );
