@@ -19,7 +19,11 @@ function Header ({loggedIn, change}) {
                         navigate('/Register');
                         change(!loggedIn);
                     }} className="w-full hover:scale-105 transition-all duration-300 rounded text-lg font-serif bg-salmon text-white">sign up</button>
-                    <button className="rounded hover:scale-105 transition-all duration-300  w-full text-lg font-serif bg-salmon text-white">log in</button>
+                    <button type="button" onClick={(e)=> {
+                        navigate('/Register');
+                        change(!loggedIn);
+                    }}
+                        className="rounded hover:scale-105 transition-all duration-300  w-full text-lg font-serif bg-salmon text-white">log in</button>
                 </div>
                     <img src={loggedIn ? AndrewProfile : default_profile} className="rounded-full w-20 h-20" alt="default-profile" />
             </div>
