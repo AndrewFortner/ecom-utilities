@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useForm from './useForm';
 import validate from './validateInfo';
+import { useNavigate } from 'react-router-dom';
 import Form from './Form.css';
 
 const Login = ({submitForm}) => {
@@ -8,6 +9,7 @@ const Login = ({submitForm}) => {
         submitForm, 
         validate
         );
+    const navigate = useNavigate();
     
     return (
         <div className='form-content-right'>
@@ -48,7 +50,9 @@ const Login = ({submitForm}) => {
                 Sign In
                 </button>
                 <p>Don't have an account?</p>
-                <button className="form-input-btn">
+                <button className="form-input-btn" type='button' onClick={(e) => {
+                    navigate('./Register');
+                }}>
                 Sign Up
                 </button>
                 <a href='/'>Forgot Password?</a>
