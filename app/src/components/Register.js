@@ -3,6 +3,7 @@ import useForm from './useForm';
 import validate from './validateInfo';
 import Form from './Form.css';
 import './Register.css';
+import Header from './Header';
 
 const Register = ({submitForm}) => {
     const { handleChange, values, handleSubmit, errors } = useForm(
