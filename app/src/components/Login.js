@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import useForm from './useForm';
 import validate from './validateInfo';
 import Form from './Form.css';
-import Header from './Header';
 
-const Register = ({submitForm}) => {
+const Login = ({submitForm}) => {
     const { handleChange, values, handleSubmit, errors } = useForm(
         submitForm, 
         validate
@@ -13,22 +12,7 @@ const Register = ({submitForm}) => {
     return (
         <div className='form-content-right'>
             <form className='form' onSubmit={handleSubmit}>
-                <h1>Create Your Account</h1>
-                <div className='form-inputs'>
-                    <label htmlFor='name'
-                    className='form-label'>
-                    Name
-                    </label>
-                        <input 
-                        id='name'
-                        type="text" 
-                        name='name' 
-                        className="form-input"
-                        placeholder='Enter name'
-                        value={values.name}
-                        onChange={handleChange} />
-                        {errors.name && <p>{errors.name}</p>}
-                </div>
+                <h1>Welcom Back!</h1>
                 <div className='form-inputs'>
                     <label htmlFor='email'
                     className='form-label'>
@@ -59,29 +43,19 @@ const Register = ({submitForm}) => {
                         onChange={handleChange} />
                         {errors.password && <p>{errors.password}</p>}
                 </div>
-                <div className='form-inputs'>
-                    <label htmlFor='password2'
-                    className='form-label'>
-                    Confirm Password
-                    </label>
-                        <input 
-                        id='password2'
-                        type="password" 
-                        name='password2' 
-                        className="form-input"
-                        placeholder='Enter password'
-                        value={values.password2}
-                        onChange={handleChange} />
-                        {errors.password2 && <p>{errors.password2}</p>}
-                </div>
                 <button className="form-input-btn" 
                 type='submit'>
-                Create Account
+                Sign In
                 </button>
+                <p>Don't have an account?</p>
+                <button className="form-input-btn">
+                Sign Up
+                </button>
+                <a href='/'>Forgot Password?</a>
             </form>
         </div>
     );
 };
 
 
-export default Register;
+export default Login;

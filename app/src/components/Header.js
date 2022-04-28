@@ -20,7 +20,7 @@ function Header ({loggedIn, change}) {
                         change(!loggedIn);
                     }} className="w-full hover:scale-105 transition-all duration-300 rounded text-lg font-serif bg-salmon text-white">sign up</button>
                     <button type="button" onClick={(e)=> {
-                        navigate('/Register');
+                        navigate('/Login');
                         change(!loggedIn);
                     }}
                         className="rounded hover:scale-105 transition-all duration-300  w-full text-lg font-serif bg-salmon text-white">log in</button>

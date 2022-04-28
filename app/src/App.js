@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import { Routes, Route, Link } from "react-router-dom";
 import Register from './components/Register';
+import Login from './components/Login';
 import { useState } from 'react';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Header loggedIn = {loggedIn} change={change}/>} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
     </div>
     
