@@ -1,0 +1,9 @@
+ol li {
+    list-style: decimal;
+    list-style-position: inside;
+}
+.bruh{
+    align-items: center;
+    justify-content: center;
+
+}

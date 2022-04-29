@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useForm from './useForm';
 import validate from './validateInfo';
+import { useNavigate } from 'react-router-dom';
 import Form from './Form.css';
 import Header from './Header';
 
@@ -9,6 +10,7 @@ const Register = ({submitForm}) => {
         submitForm, 
         validate
         );
+    const navigate = useNavigate();
     
     return (
         <div className='form-content-right'>
@@ -75,7 +77,8 @@ const Register = ({submitForm}) => {
                         {errors.password2 && <p>{errors.password2}</p>}
                 </div>
                 <button className="form-input-btn" 
-                type='submit'>
+                type='submit' onClick={(e)=> {
+                    navigate('/');}}>
                 Create Account
                 </button>
             </form>

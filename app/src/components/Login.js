@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import useForm from './useForm';
 import validate from './validateInfo';
 import Form from './Form.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({submitForm}) => {
     const { handleChange, values, handleSubmit, errors } = useForm(
         submitForm, 
         validate
         );
+    const navigate = useNavigate();
     
     return (
         <div className='form-content-right'>
@@ -44,11 +46,14 @@ const Login = ({submitForm}) => {
                         {errors.password && <p>{errors.password}</p>}
                 </div>
                 <button className="form-input-btn" 
-                type='submit'>
+                type='submit' onClick={(e)=> {
+                    navigate('/');}}>
                 Sign In
                 </button>
                 <p>Don't have an account?</p>
-                <button className="form-input-btn">
+                <button className="form-input-btn" 
+                    onClick={(e)=> {
+                    navigate('/Register');}}>
                 Sign Up
                 </button>
                 <a href='/'>Forgot Password?</a>

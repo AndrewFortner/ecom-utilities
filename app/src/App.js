@@ -4,18 +4,12 @@ import { Routes, Route, Link } from "react-router-dom";
 import Register from './components/Register';
 import Login from './components/Login';
 import { useState } from 'react';
+import SwipingPage from './components/SwipingPage';
 
 function App() {
   const [loggedIn, change] = useState(false);
   return (
-    <div className = "">
-      <Routes>
-        <Route path="/" element={<Header loggedIn = {loggedIn} change={change}/>} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/Login" element={<Login />} />
-      </Routes>
-    </div>
-    
+    <SwipingPage/>
   );
 }
 
