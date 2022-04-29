@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useForm from './useForm';
+import useForm from './UseForm';
 import validate from './validateInfo';
 import { useNavigate } from 'react-router-dom';
 import Form from './Form.css';
