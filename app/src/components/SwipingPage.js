@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function SwipingPage() {
   const [loggedIn, change] = useState(false);
+  const [saved, addSaved] =  useState([])
   const data = json_data["recipes"];
   const navigate = useNavigate();
   let numRecipes = 99;
@@ -16,7 +17,7 @@ function SwipingPage() {
     console.log(item)
     const ingredients = item.extendedIngredients.map((ingredient,index) => {
       return (
-        <li key={index}>{ingredient.name} {ingredient.amount} {ingredient.unit}</li>
+        <li key={index}>{ingredient.name} {(ingredient.amount).toFixed(2).replace(/[.,]00$/, "")} {ingredient.unit}</li>
       );
     })
     const instructions = item.analyzedInstructions[0]?.steps.map((instruction,index) => {
@@ -27,8 +28,8 @@ function SwipingPage() {
     })
     return (
       <div className="recipe-card" key={index}>
-        <div className="flex flex-row justify-center items-center">
-          <div className="recipe-card-info">
+        <div className="flex flex-row justify-center items-center recipe-card-info">
+          <div className="">
             <h3><u>Ingredients</u></h3>
 
             <ol>
@@ -45,7 +46,7 @@ function SwipingPage() {
             <h3><b>{item.title} - ${(item.pricePerServing/10).toFixed(2)}</b></h3>
           </div>
         </div>
-        <div className="flex flex-row justify-center">
+        <div className="swipe-feature flex flex-row justify-center">
           <div className="flex flex-row justify-between content-center w-6/12">
             <button className="flex flex-col justify-center items-center" id="form-input-btn"
                     onClick={(e)=> {
@@ -56,6 +57,7 @@ function SwipingPage() {
             <button className="flex flex-col justify-center items-center" id="form-input-btn"
                     onClick={(e)=> {
                       navigate('/')
+                      addSaved(oldArray => [...oldArray,index])
                     }}>
               <img src={require('../GreenCheck.png')} height='75' width='75'/>
             </button>
