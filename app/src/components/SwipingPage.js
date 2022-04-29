@@ -51,13 +51,13 @@ function SwipingPage() {
                     onClick={(e)=> {
                       navigate('/')
                     }}>
-              no
+              <img src={require('../RedX.png')} height='75' width='75'/>
             </button>
             <button className="flex flex-col justify-center items-center" id="form-input-btn"
                     onClick={(e)=> {
                       navigate('/')
                     }}>
-              yes
+              <img src={require('../GreenCheck.png')} height='75' width='75'/>
             </button>
           </div>
         </div>
