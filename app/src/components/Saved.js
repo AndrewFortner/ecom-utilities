@@ -5,17 +5,15 @@ import Login from './Login';
 import json_data from '../recipes.json';
 import { useState } from 'react';
 import './bruh.css'
-import Saved from './Saved'
+import saved from './SwipingPage'
 import { useNavigate } from "react-router-dom";
 
-function SwipingPage() {
+function Saved({saved, addSaved}) {
   const [loggedIn, change] = useState(false);
-  const [bro, broo] = useState(true);
-  const [saved, addSaved] =  useState([])
   const data = json_data["recipes"];
   const navigate = useNavigate();
   let numRecipes = 99;
-  const dataItems = data.map((item,index) => {
+  const dataItems = saved.map((item,index) => {
     console.log(item)
     const ingredients = item.extendedIngredients.map((ingredient,index) => {
       return (
@@ -28,9 +26,8 @@ function SwipingPage() {
         <li key={index}>{instruction.step}</li>
       );
     })
-    
-      
-      const hi=<div className="recipe-card" key={index}>
+    return (
+      <div className="recipe-card" key={index}>
         <div className="flex flex-row justify-center items-center recipe-card-info">
           <div className="">
             <h3><u>Ingredients</u></h3>
@@ -49,52 +46,23 @@ function SwipingPage() {
             <h3><b>{item.title} - ${(item.pricePerServing/10).toFixed(2)}</b></h3>
           </div>
         </div>
-        <div className="swipe-feature flex flex-row justify-center">
-          <div className="flex flex-row justify-between content-center w-6/12">
-            <button className="flex flex-col justify-center items-center" id="form-input-btn"
-                    onClick={(e)=> {
-                      navigate('/')
-                    }}>
-              <img src={require('../RedX.png')} height='75' width='75'/>
-            </button>
-            <button className="flex flex-col justify-center items-center" id="form-input-btn"
-                    onClick={(e)=> {
-                      navigate('Saved')
-                      broo(!bro)
-                    }}>
-              <img src={require('../YummyLibrary.png')} height='200' width='200'/>
-            </button>
-            <button className="flex flex-col justify-center items-center" id="form-input-btn"
-                    onClick={(e)=> {
-                      navigate('/')
-                      addSaved(oldArray => [...oldArray,item])
-                    }}>
-              <img src={require('../GreenCheck.png')} height='75' width='75'/>
-            </button>
-          </div>
-        </div>
+        
 
       </div>
-      if(bro){
-        return hi
-      }
-      else{
-        return
-      }
-    
+    )
   })
   return (
     <div className = "content-center">
       <Routes>
         <Route path="/" element={<Header loggedIn = {loggedIn} change={change}/>} />
         <Route path="/Register" element={<Register />} />
-        <Route path="/Saved" element={<Saved saved = {saved} change={addSaved}/> } />
+        <Route path="/Saved" element={<Saved />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
-      {dataItems[Math.floor(Math.random() * 99)]}
+      {dataItems}
     </div>
     
   );
 }
 
-export default SwipingPage;
+export default Saved;

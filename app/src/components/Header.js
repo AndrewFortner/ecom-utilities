@@ -9,10 +9,15 @@ function Header ({loggedIn, change}) {
     const navigate = useNavigate();
     return (
         <div className="flex flex-row justify-between">
+            <button className = "" onClick={(e)=> {
+                      navigate('/')
+                    }}>
             <div className="flex flex-row items-center justify-start">
                 <img src={logo} className="w-24 h-16" alt="logo" />
                 <p className="text-3xl text-salmon font-serif">MealMate</p>
             </div>
+            </button>
+            
             <div className="flex flex-row items-center">
                 <div className={`flex flex-col items-center justify-between h-16 w-20 ${loggedIn ? 'hidden' : ''}`}>
                     <button type="button" onClick={(e)=> {
@@ -27,8 +32,7 @@ function Header ({loggedIn, change}) {
                 </div>
                     <img src={loggedIn ? AndrewProfile : default_profile} className="rounded-full w-20 h-20" alt="default-profile" />
             </div>
-         </div>
-        
+         </div> 
     );
 }
 
