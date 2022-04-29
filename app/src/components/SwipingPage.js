@@ -11,6 +11,7 @@ function SwipingPage() {
   const [loggedIn, change] = useState(false);
   const data = json_data["recipes"];
   const navigate = useNavigate();
+  let numRecipes = 99;
   const dataItems = data.map((item,index) => {
     console.log(item)
     const ingredients = item.extendedIngredients.map((ingredient,index) => {
@@ -26,7 +27,7 @@ function SwipingPage() {
     })
     return (
       <div className="recipe-card" key={index}>
-        <div className="flex flex-row min-h-screen justify-center items-center">
+        <div className="flex flex-row justify-center items-center">
           <div className="recipe-card-info">
             <h3><u>Ingredients</u></h3>
 
@@ -39,17 +40,28 @@ function SwipingPage() {
             {/*  {instructions}*/}
             {/*</ol>*/}
           </div>
-          <div className="flex flex-col min-h-screen justify-center items-center" id="recipe-card-id">
+          <div className="flex flex-col justify-center items-center" id="recipe-card-id">
             <img src={item.image} alt="recipe" />
             <h3><b>{item.title} - ${(item.pricePerServing/10).toFixed(2)}</b></h3>
           </div>
         </div>
-        <button className="flex flex-col min-h-screen justify-center items-center" id="form-input-btn"
-                onClick={(e)=> {
-                  navigate('/')
-                }}>
-          yoyooy
-        </button>
+        <div className="flex flex-row justify-center">
+          <div className="flex flex-row justify-between content-center w-6/12">
+            <button className="flex flex-col justify-center items-center" id="form-input-btn"
+                    onClick={(e)=> {
+                      navigate('/')
+                    }}>
+              no
+            </button>
+            <button className="flex flex-col justify-center items-center" id="form-input-btn"
+                    onClick={(e)=> {
+                      navigate('/')
+                    }}>
+              yes
+            </button>
+          </div>
+        </div>
+
       </div>
     )
   })
