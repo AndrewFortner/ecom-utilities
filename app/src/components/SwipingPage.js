@@ -5,9 +5,12 @@ import Login from './Login';
 import json_data from '../recipes.json';
 import { useState } from 'react';
 import './bruh.css'
+import { useNavigate } from "react-router-dom";
+
 function SwipingPage() {
   const [loggedIn, change] = useState(false);
   const data = json_data["recipes"];
+  const navigate = useNavigate();
   const dataItems = data.map((item,index) => {
     console.log(item)
     const ingredients = item.extendedIngredients.map((ingredient,index) => {
@@ -23,34 +26,41 @@ function SwipingPage() {
     })
     return (
       <div className="recipe-card" key={index}>
-        <div className="recipe-card-image">
-          <img src={item.image} alt="recipe" />
-        </div>
-        <div className="recipe-card-info">
-          <h3><b>{item.title} - ${(item.pricePerServing/10).toFixed(2)}</b></h3>
-          <h3><u>Ingredients</u></h3>
+        <div className="flex flex-row min-h-screen justify-center items-center">
+          <div className="recipe-card-info">
+            <h3><u>Ingredients</u></h3>
 
-          <ol>
-            {ingredients}
-          </ol>
-          <h3><u>Instructions</u  ></h3>
+            <ol>
+              {ingredients}
+            </ol>
+            {/*<h3><u>Instructions</u  ></h3>*/}
 
-          <ol>
-            {instructions}
-          </ol>
+            {/*<ol>*/}
+            {/*  {instructions}*/}
+            {/*</ol>*/}
+          </div>
+          <div className="flex flex-col min-h-screen justify-center items-center" id="recipe-card-id">
+            <img src={item.image} alt="recipe" />
+            <h3><b>{item.title} - ${(item.pricePerServing/10).toFixed(2)}</b></h3>
+          </div>
         </div>
+        <button className="flex flex-col min-h-screen justify-center items-center" id="form-input-btn"
+                onClick={(e)=> {
+                  navigate('/')
+                }}>
+          yoyooy
+        </button>
       </div>
     )
   })
   return (
     <div className = "content-center">
-          {dataItems[0]}
-
       <Routes>
         <Route path="/" element={<Header loggedIn = {loggedIn} change={change}/>} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
+      {dataItems[Math.floor(Math.random() * 99)]}
     </div>
     
   );
