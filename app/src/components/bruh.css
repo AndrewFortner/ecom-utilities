@@ -5,5 +5,18 @@ ol li {
 .bruh{
     align-items: center;
     justify-content: center;
+}
+
+.recipecardinfo{
+    margin-bottom: 30px
+}
+
+.img{
+    width: 70%;
+    height: 70%
+}
+.font{
+    font-family:'Poppins-Black';
+    src: local('Poppins-Black'), url(../Poppins/Poppins-Light.ttf) format('truetype ');
 
 }

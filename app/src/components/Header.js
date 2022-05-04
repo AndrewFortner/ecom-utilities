@@ -14,7 +14,7 @@ function Header ({loggedIn, change}) {
                     }}>
             <div className="flex flex-row items-center justify-start">
                 <img src={logo} className="w-24 h-16" alt="logo" />
-                <p className="text-3xl text-salmon font-serif">MealMate</p>
+                <p className="text-3xl text-salmon font-poppins">MealMate</p>
             </div>
             </button>
             
@@ -23,12 +23,12 @@ function Header ({loggedIn, change}) {
                     <button type="button" onClick={(e)=> {
                         navigate('/Register');
                         change(!loggedIn);
-                    }} className="w-full hover:scale-105 transition-all duration-300 rounded text-lg font-serif bg-salmon text-white">sign up</button>
+                    }} className="w-full hover:scale-105 transition-all duration-300 rounded text-lg font-poppins bg-salmon text-white">sign up</button>
                     <button type="button" onClick={(e)=> {
                         navigate('/Login');
                         change(!loggedIn);
                     }}
-                        className="rounded hover:scale-105 transition-all duration-300  w-full text-lg font-serif bg-salmon text-white">log in</button>
+                        className="rounded hover:scale-105 transition-all duration-300  w-full text-lg font-poppins bg-salmon text-white">log in</button>
                 </div>
                     <img src={loggedIn ? AndrewProfile : default_profile} className="rounded-full w-20 h-20" alt="default-profile" />
             </div>

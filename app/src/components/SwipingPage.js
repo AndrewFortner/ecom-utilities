@@ -12,11 +12,15 @@ function SwipingPage() {
   const [loggedIn, change] = useState(false);
   const [bro, broo] = useState(true);
   const [saved, addSaved] =  useState([])
+  const [price, setPrice] = useState(0);
   const data = json_data["recipes"];
   const navigate = useNavigate();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setPrice(300)
+  };
   let numRecipes = 99;
   const dataItems = data.map((item,index) => {
-    console.log(item)
     const ingredients = item.extendedIngredients.map((ingredient,index) => {
       return (
         <li key={index}>{ingredient.name} {(ingredient.amount).toFixed(2).replace(/[.,]00$/, "")} {ingredient.unit}</li>
@@ -30,9 +34,9 @@ function SwipingPage() {
     })
     
       
-      const hi=<div className="recipe-card" key={index}>
-        <div className="flex flex-row justify-center items-center recipe-card-info">
-          <div className="">
+      const hi=<div className=" recipe-card font-poppins" key={index}>
+        <div className="flex flex-row justify-center items-center recipecardinfo">
+          <div className="font-poppins">
             <h3><u>Ingredients</u></h3>
 
             <ol>
@@ -45,9 +49,15 @@ function SwipingPage() {
             {/*</ol>*/}
           </div>
           <div className="flex flex-col justify-center items-center" id="recipe-card-id">
-            <img src={item.image} alt="recipe" />
-            <h3><b>{item.title} - ${(item.pricePerServing/10).toFixed(2)}</b></h3>
+            <img class = "img" src={item.image} alt="recipe" />
+            <h3><b>{item.title} - ${(item.pricePerServing/25).toFixed(2)}</b></h3>
           </div>
+          <form onSubmit={onSubmit}>
+            price
+            <input type="text" name="price"/>
+            <input type="submit" name="Submit" />
+
+          </form>
         </div>
         <div className="swipe-feature flex flex-row justify-center">
           <div className="flex flex-row justify-between content-center w-6/12">
@@ -91,7 +101,7 @@ function SwipingPage() {
         <Route path="/Saved" element={<Saved saved = {saved} change={addSaved}/> } />
         <Route path="/Login" element={<Login />} />
       </Routes>
-      {dataItems[Math.floor(Math.random() * 99)]}
+        {dataItems[Math.floor(Math.random() * 99)]}
     </div>
     
   );
