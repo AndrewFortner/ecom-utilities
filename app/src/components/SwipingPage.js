@@ -12,19 +12,33 @@ function SwipingPage() {
   const [loggedIn, change] = useState(false);
   const [bro, broo] = useState(true);
   const [saved, addSaved] =  useState([])
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(5554);
   const data = json_data["recipes"];
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
-    setPrice(300)
+    // this.setState({value: event.target.value});
+    setPrice(e.target.value)
+
+    // setPrice(300)
   };
+  const changePrice = (e) => {
+    e.preventDefault();
+    let a = document.getElementById('bbc').value
+
+    setPrice(a)
+  }
   let numRecipes = 99;
   const dataItems = data.map((item,index) => {
     const ingredients = item.extendedIngredients.map((ingredient,index) => {
-      return (
-        <li key={index}>{ingredient.name} {(ingredient.amount).toFixed(2).replace(/[.,]00$/, "")} {ingredient.unit}</li>
-      );
+      // return {price} > 4 ? 
+      // if({price} > 4){
+        return  <li key={index}>{ingredient.name} {(ingredient.amount).toFixed(2).replace(/[.,]00$/, "")} {ingredient.unit}</li>
+        
+      // } 
+      // return <h> nope</h>
+      
+      // : ''
     })
     const instructions = item.analyzedInstructions[0]?.steps.map((instruction,index) => {
       console.log(instruction.step)
@@ -43,19 +57,20 @@ function SwipingPage() {
               {ingredients}
             </ol>
             {/*<h3><u>Instructions</u  ></h3>*/}
-
             {/*<ol>*/}
             {/*  {instructions}*/}
             {/*</ol>*/}
           </div>
           <div className="flex flex-col justify-center items-center" id="recipe-card-id">
+          {price}
+
             <img class = "img" src={item.image} alt="recipe" />
             <h3><b>{item.title} - ${(item.pricePerServing/25).toFixed(2)}</b></h3>
           </div>
-          <form onSubmit={onSubmit}>
+          <form >
             price
-            <input type="text" name="price"/>
-            <input type="submit" name="Submit" />
+            <input type="text" name="price" id="bbc" />
+            <button type="submit" name="Submit" onClick={changePrice}>Submit</button>
 
           </form>
         </div>
