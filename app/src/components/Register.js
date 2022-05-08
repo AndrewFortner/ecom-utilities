@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from './Form.css';
 import Header from './Header';
 
+
 const Register = ({submitForm}) => {
     const { handleChange, values, handleSubmit, errors } = useForm(
         submitForm, 

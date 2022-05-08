@@ -8,7 +8,7 @@ import './bruh.css'
 import saved from './SwipingPage'
 import { useNavigate } from "react-router-dom";
 
-function Saved({saved, addSaved}) {
+function Saved({saved, price}) {
   const [loggedIn, change] = useState(false);
   const data = json_data["recipes"];
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ function Saved({saved, addSaved}) {
           </div>
           <div className="flex flex-col justify-center items-center" id="recipe-card-id">
             <img src={item.image} alt="recipe" />
-            <h3><b>{item.title} - ${(item.pricePerServing/10).toFixed(2)}</b></h3>
+            <h3><b>{item.title} - ${(item.pricePerServing/25 % 7.5).toFixed(2)}</b></h3>
           </div>
         </div>
         

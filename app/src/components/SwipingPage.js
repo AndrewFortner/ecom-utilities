@@ -12,7 +12,7 @@ function SwipingPage() {
   const [loggedIn, change] = useState(false);
   const [bro, broo] = useState(true);
   const [saved, addSaved] =  useState([])
-  const [price, setPrice] = useState(5554);
+  const [price, setPrice] = useState(500);
   const data = json_data["recipes"];
   const navigate = useNavigate();
   const onSubmit = (e) => {
@@ -62,17 +62,15 @@ function SwipingPage() {
             {/*</ol>*/}
           </div>
           <div className="flex flex-col justify-center items-center" id="recipe-card-id">
-          {price}
+          <form >
+            Only show meals less than $
+            <input type="text" name="price" id="bbc" />
+            <button type="submit" name="Submit" onClick={changePrice}>Apply Filter</button>
+          </form>
 
             <img class = "img" src={item.image} alt="recipe" />
-            <h3><b>{item.title} - ${(item.pricePerServing/25).toFixed(2)}</b></h3>
+            <h3><b>{item.title} - ${((item.pricePerServing/25) % price).toFixed(2)}</b></h3>
           </div>
-          <form >
-            price
-            <input type="text" name="price" id="bbc" />
-            <button type="submit" name="Submit" onClick={changePrice}>Submit</button>
-
-          </form>
         </div>
         <div className="swipe-feature flex flex-row justify-center">
           <div className="flex flex-row justify-between content-center w-6/12">
